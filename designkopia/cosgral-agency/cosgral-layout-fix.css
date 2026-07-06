@@ -1,0 +1,127 @@
+/* COSGRAL — layout fixes (hero, films, vv, about, pillars) */
+
+/* 3. Hero — głowa widoczna, oddech nad ramionami */
+.section_hero img.hero_bg {
+  object-fit: cover !important;
+  object-position: center 8% !important;
+  transform: scale(1) !important;
+  transform-origin: center 8%;
+}
+
+/* 1. Filmy obok siebie — wyrównanie kadrów */
+.section_films a[data-film="1"] {
+  overflow: hidden;
+}
+.section_films a[data-film="1"] .film_img {
+  object-fit: cover !important;
+  object-position: 52% 42% !important;
+  will-change: clip-path, object-position;
+}
+.section_films a[data-film="2"] .film_img {
+  object-fit: cover !important;
+  object-position: center 48% !important;
+}
+.section_films .film {
+  overflow: hidden;
+}
+.section_films .films_wrapper {
+  align-items: stretch;
+}
+
+/* 2. Napisy na filmach — ukryte podczas pin hero (nie nachodzą na zdjęcia) */
+.hero_stack_wrapper [data-heading-films],
+.hero_stack_wrapper [data-body-films],
+.hero_stack_wrapper .film .u-btn-ellipse {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Filmy nad hero/vv tylko gdy panel ma clip — bez ciemnego pełnoekranowego tła */
+@media screen and (min-width: 992px) {
+  .hero_stack_wrapper > .section_films {
+    z-index: 2;
+    pointer-events: none;
+    background: transparent !important;
+  }
+}
+
+/* VV — zbiegnięcie bez nakładania (szerokość z tekstu, nie stały box) */
+.section_vv .vv_content {
+  width: auto !important;
+  max-width: 46vw;
+  flex-shrink: 0;
+}
+.section_vv .vv_content h2 {
+  white-space: nowrap;
+}
+.section_vv .vv_content.one h2 {
+  font-size: clamp(1.85rem, 3.6vw, 2.75rem) !important;
+  line-height: 1.05 !important;
+}
+.section_vv .vv_content.two h2 {
+  font-size: clamp(1.45rem, 2.6vw, 2rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0.03em;
+}
+
+/* 4. About — bez duplikatu zdjęcia na dole */
+.cosgral-about-tile,
+.about_tile {
+  display: none !important;
+}
+.section_about img.about_bg {
+  object-fit: cover !important;
+  object-position: center 38% !important;
+}
+
+/* 5. About — bez podwójnego COSGRAL / nakładania nagłówków */
+.about_heading.decor,
+.about_decor {
+  display: none !important;
+}
+.about_heading_wrapper {
+  position: relative;
+  z-index: 2;
+}
+.about_heading.u-h3-review {
+  line-height: 0.92 !important;
+  letter-spacing: -0.02em;
+}
+
+/* Pillars — czytelniejsza siatka, bez kolizji STACK / AI */
+.section_pillars .pillars_wrapper {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: clamp(3rem, 8vh, 5.5rem) clamp(1.5rem, 4vw, 3rem) !important;
+  align-content: start;
+  min-height: 55vh;
+  position: relative;
+  z-index: 3;
+}
+.section_pillars .pillar {
+  position: relative !important;
+  min-width: 0;
+}
+.section_pillars .pillar_heading {
+  line-height: 1 !important;
+  white-space: nowrap;
+}
+.section_pillars .pillar_heading_wrapper {
+  margin-bottom: 0.75rem;
+}
+.section_pillars .pillar_content {
+  max-width: 22rem;
+}
+
+@media screen and (min-width: 992px) {
+  .about_stack_wrapper {
+    display: grid !important;
+  }
+  .about_stack_wrapper > .section_about,
+  .about_stack_wrapper > .section_pillars {
+    grid-area: 1 / 1;
+  }
+}
+

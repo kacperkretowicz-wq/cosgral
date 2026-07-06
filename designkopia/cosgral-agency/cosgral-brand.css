@@ -1,0 +1,112 @@
+/* COSGRAL brand — nav, footer, palette */
+.navbar_logo .nav_logo {
+  display: none !important;
+}
+.navbar_logo {
+  display: flex !important;
+  align-items: center;
+  min-width: 8rem;
+}
+.navbar_logo::after {
+  content: "COSGRAL";
+  font-family: system-ui, sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #f5f0eb;
+  line-height: 1;
+}
+
+.footer_logo.difference,
+.footer_logo_wrapper > svg,
+.footer_logo.mobile,
+img.footer_logo {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+.cosgral-footer-wordmark {
+  display: block !important;
+  margin-top: 1.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: clamp(2.2rem, 9vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: #e82323;
+  line-height: 0.95;
+}
+
+/* Footer — jasne rozmyte tło zamiast ciemnego portretu */
+.section_footer {
+  position: relative;
+  background-color: #f5f0eb;
+}
+.section_footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("../../images/cosgral-agency/approved/cosgral-approved-footer.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(1.08);
+  opacity: 0.92;
+}
+.section_footer .footer_container,
+.section_footer .footer_wrapper,
+.section_footer .footer_logo_wrapper {
+  position: relative;
+  z-index: 1;
+}
+.footer_form_bg.color_burn {
+  mix-blend-mode: soft-light !important;
+  opacity: 0.35 !important;
+}
+.footer_form_bg.difference {
+  mix-blend-mode: normal !important;
+  background: rgba(245, 240, 235, 0.55) !important;
+}
+
+/* Hero — stabilniejszy tekst przy obrocie maski */
+.hero_decor {
+  display: none !important;
+}
+.hero_wrapper,
+.hero_heading,
+[data-hero-heading="main"],
+.hero_heading_first,
+.hero_heading_second,
+.hero_heading_third,
+.hero_heading_bottom {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+.section_hero {
+  transform: translateZ(0);
+}
+
+/* About — tile usunięty */
+.section_about .about_wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tymczasowo ukryte — czekamy na Twoje zdjęcia (wizualizacje / parhouse) */
+#cosgral-playfight,
+#cosgral-parhouse {
+  display: none !important;
+}
+
+/* Parhouse overrides gdy wróci */
+#cosgral-parhouse {
+  --ph-accent: #e82323;
+  color: #f5f0eb;
+}
